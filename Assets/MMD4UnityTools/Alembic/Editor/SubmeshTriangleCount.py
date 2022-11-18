@@ -1,7 +1,7 @@
 import bpy
 import os
-abcPath = os.environ["Unity_Alembic_Path"]
-resultPath = abcPath[:len(abcPath)-3] + "txt"
+abcPath = os.environ["Unity_Alembic_Path"] #改abc文件绝对路径
+resultPath = abcPath[:len(abcPath)-3] + "txt" # 这里的意思是指该文件夹下同名txt文件
 
 for obj in bpy.context.scene.objects:
     obj.select_set(True)
@@ -21,7 +21,7 @@ for obj in bpy.context.scene.objects:
     counts = sum([(len(p.vertices) - 2) for p in mesh.polygons])
     lengths.append(counts)
 
-f = open(resultPath, "w")
+f = open(resultPath, "w")  #如果无法运行，可改txt绝对路径
 f.write('\n'.join(str(e) for e in lengths))
 
 # os.environ["Unity_Alembic_Path_Result"]=
